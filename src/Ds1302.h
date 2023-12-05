@@ -78,6 +78,11 @@ class Ds1302
          * Stops the oscillator.
          */
         void halt();
+        
+        /**
+         * Starts the oscillator if halted.
+         */
+        void unhalt();
 
         /**
          * Returns the current date and time.

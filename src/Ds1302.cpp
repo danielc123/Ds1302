@@ -94,6 +94,14 @@ void Ds1302::halt()
 }
 
 
+void Ds1302::unhalt()
+{
+    _prepareWrite(REG_SECONDS);
+    _writeByte(0b00000000);
+    _end();
+}
+
+
 void Ds1302::_prepareRead(uint8_t address)
 {
     _setDirection(OUTPUT);
