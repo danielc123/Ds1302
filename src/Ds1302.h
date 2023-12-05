@@ -28,6 +28,15 @@ class Ds1302
             uint8_t dow;
         } DateTime;
 
+        typedef struct {
+            uint8_t on_minute;
+            uint8_t on_hour;
+            uint8_t on_dow;
+            uint8_t off_minute;
+            uint8_t off_hour;
+            uint8_t off_dow;
+        } Programtime;
+
         /**
          * Months of year
          */
@@ -57,6 +66,16 @@ class Ds1302
             DOW_FRI = 5,
             DOW_SAT = 6,
             DOW_SUN = 7
+        };
+
+        /**
+         * Time program addresses
+         */
+        enum TPROG : uint8_t {
+            TPROG0 = 0xC0,
+            TPROG1 = 0xCC,
+            TPROG2 = 0xD8,
+            TPROG3 = 0xE4,
         };
 
         /**
@@ -93,6 +112,18 @@ class Ds1302
          * Sets the current date and time.
          */
         void setDateTime(DateTime* dt);
+
+        /**
+         * Returns RAM.
+         */
+        void getprogramtime(Programtime* pt, uint8_t address);
+
+        /**
+         * Sets RAM.
+         */
+        void setprogramtime(Programtime* pt, uint8_t address);
+
+
 
     private:
 
