@@ -114,14 +114,24 @@ class Ds1302
         void setDateTime(DateTime* dt);
 
         /**
-         * Returns RAM.
+         * Returns program time from RAM.
          */
         void getprogramtime(Programtime* pt, uint8_t address);
 
         /**
-         * Sets RAM.
+         * Sets program time to RAM.
          */
         void setprogramtime(Programtime* pt, uint8_t address);
+
+        /**
+         * Retrieves byte from RAM.
+         */
+        uint8_t getbyteRAM(uint8_t address);
+
+        /**
+         * Stores byte into RAM.
+         */
+        void setbyteRAM(uint8_t byte, uint8_t address);
 
 
 

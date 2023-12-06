@@ -110,7 +110,7 @@ void Ds1302::getprogramtime(Programtime* pt, uint8_t address)
 }
 
 
-void Ds1302::setprogramtime(Programtime* pt, uint8_t program)
+void Ds1302::setprogramtime(Programtime* pt, uint8_t address)
 {
     _prepareWrite(REG_WP);
     _writeByte(0b00000000);
@@ -141,6 +141,32 @@ void Ds1302::setprogramtime(Programtime* pt, uint8_t program)
 
 }
 
+
+uint8_t Ds1302::getbyteRAM(uint8_t address)
+{
+
+    _prepareRead(address);
+    uint8_t data = _readByte();
+    _end();
+    return data;
+}
+
+
+void Ds1302::setbyteRAM(uint8_t byte, uint8_t address)
+{
+    _prepareWrite(REG_WP);
+    _writeByte(0b00000000);
+    _end();
+
+    _prepareWrite(address);
+    _writeByte(byte);
+    _end();
+
+    _prepareWrite(REG_WP);
+    _writeByte(0b10000000);
+    _end();
+
+}
 
 void Ds1302::halt()
 {
