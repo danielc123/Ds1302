@@ -106,7 +106,7 @@ class Ds1302
         /**
          * Gets the current day of week.
          */
-        uint8_t Ds1302::getDow();
+        uint8_t getDow();
 
         /**
          * Retrieves byte from RAM.
