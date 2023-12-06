@@ -69,16 +69,6 @@ class Ds1302
         };
 
         /**
-         * Time program addresses
-         */
-        enum TPROG : uint8_t {
-            TPROG0 = 0xC0,
-            TPROG1 = 0xCC,
-            TPROG2 = 0xD8,
-            TPROG3 = 0xE4,
-        };
-
-        /**
          * Constructor (pin configuration).
          */
         Ds1302(uint8_t pin_ena, uint8_t pin_clk, uint8_t pin_dat);
@@ -114,14 +104,7 @@ class Ds1302
         void setDateTime(DateTime* dt);
 
         /**
-         * Returns program time from RAM.
          */
-        void getprogramtime(Programtime* pt, uint8_t address);
-
-        /**
-         * Sets program time to RAM.
-         */
-        void setprogramtime(Programtime* pt, uint8_t address);
 
         /**
          * Retrieves byte from RAM.

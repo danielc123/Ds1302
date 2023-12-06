@@ -86,59 +86,8 @@ void Ds1302::setDateTime(DateTime* dt)
 }
 
 
-void Ds1302::getprogramtime(Programtime* pt, uint8_t address)
 {
-
-    _prepareRead(address);
-    pt->on_minute = _bcd2dec(_readByte() & 0b01111111);
     _end();
-    _prepareRead(address+2);
-    pt->on_hour = _bcd2dec(_readByte() & 0b00111111);
-    _end();
-    _prepareRead(address+4);
-    pt->on_dow = _bcd2dec(_readByte() & 0b00000111);
-    _end();
-    _prepareRead(address+6);
-    pt->off_minute = _bcd2dec(_readByte() & 0b01111111);
-    _end();
-    _prepareRead(address+8);
-    pt->off_hour = _bcd2dec(_readByte() & 0b00111111);
-    _end();
-    _prepareRead(address+10);
-    pt->off_dow = _bcd2dec(_readByte() & 0b00000111);
-    _end();
-}
-
-
-void Ds1302::setprogramtime(Programtime* pt, uint8_t address)
-{
-    _prepareWrite(REG_WP);
-    _writeByte(0b00000000);
-    _end();
-
-    _prepareWrite(address);
-    _writeByte(_dec2bcd(pt->on_minute % 60 ));
-    _end();
-    _prepareWrite(address+2);
-    _writeByte(_dec2bcd(pt->on_hour % 24 ));
-    _end();
-    _prepareWrite(address+4);
-    _writeByte(_dec2bcd(pt->on_dow ));
-    _end();
-    _prepareWrite(address+6);
-    _writeByte(_dec2bcd(pt->off_minute % 60 ));
-    _end();
-    _prepareWrite(address+8);
-    _writeByte(_dec2bcd(pt->off_hour % 24 ));
-    _end();
-    _prepareWrite(address+10);
-    _writeByte(_dec2bcd(pt->off_dow ));
-    _end();
-
-    _prepareWrite(REG_WP);
-    _writeByte(0b10000000);
-    _end();
-
 }
 
 
