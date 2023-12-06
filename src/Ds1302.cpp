@@ -86,8 +86,12 @@ void Ds1302::setDateTime(DateTime* dt)
 }
 
 
+uint8_t Ds1302::getDow()
 {
+    _prepareRead(REG_DAY);
+    uint8_t dow = _bcd2dec(_readByte() & 0b00000111);
     _end();
+    return dow;
 }
 
 

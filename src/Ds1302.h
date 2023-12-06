@@ -96,7 +96,7 @@ class Ds1302
         /**
          * Returns the current date and time.
          */
-        void getDateTime(DateTime* dt);;
+        void getDateTime(DateTime* dt);
 
         /**
          * Sets the current date and time.
@@ -104,7 +104,9 @@ class Ds1302
         void setDateTime(DateTime* dt);
 
         /**
+         * Gets the current day of week.
          */
+        uint8_t Ds1302::getDow();
 
         /**
          * Retrieves byte from RAM.
