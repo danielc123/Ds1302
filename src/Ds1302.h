@@ -29,13 +29,10 @@ class Ds1302
         } DateTime;
 
         typedef struct {
-            uint8_t on_minute;
-            uint8_t on_hour;
-            uint8_t on_dow;
-            uint8_t off_minute;
-            uint8_t off_hour;
-            uint8_t off_dow;
-        } Programtime;
+            uint8_t hour;
+            uint8_t minute;
+        } Ctime;
+
 
         /**
          * Months of year
@@ -107,6 +104,11 @@ class Ds1302
          * Gets the current day of week.
          */
         uint8_t getDow();
+
+        /**
+         * Gets the current Time Hour, Minutes and Seconds.
+         */
+        void getTime(Ctime* t);
 
         /**
          * Retrieves byte from RAM.
