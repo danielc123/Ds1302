@@ -83,6 +83,10 @@ void Ds1302::setDateTime(DateTime* dt)
     _writeByte(_dec2bcd(dt->year   % 100));
     _writeByte(0b10000000);
     _end();
+
+    _prepareWrite(REG_WP);
+    _writeByte(0b10000000);
+    _end();
 }
 
 
