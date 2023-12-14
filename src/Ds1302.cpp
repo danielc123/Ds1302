@@ -90,27 +90,6 @@ void Ds1302::setDateTime(DateTime* dt)
 }
 
 
-uint8_t Ds1302::getDow()
-{
-    _prepareRead(REG_DAY);
-    uint8_t dow = _bcd2dec(_readByte() & 0b00000111);
-    _end();
-    return dow;
-}
-
-
-void Ds1302::getTime(Ctime *t)
-{
-    _prepareRead(REG_HOUR);
-    t->hour = _bcd2dec(_readByte() & 0b00111111);
-    _end();
-
-    _prepareRead(REG_MINUTES);
-    t->minute = _bcd2dec(_readByte() & 0b01111111);
-    _end();
-}
-
-
 uint8_t Ds1302::getbyteRAM(uint8_t address)
 {
 
